@@ -1,4 +1,5 @@
-import { envs } from "./config"; // importar el archivo envs de config
+import { envs } from "./config";
+import { AppRoutes } from "./presentacion/router"; //1
 import { Server } from "./presentacion/server";
 
 (()=> {
@@ -10,6 +11,7 @@ import { Server } from "./presentacion/server";
   
   // todo: inicio de nuestro server
       new Server({
-        port: envs.PORT, // asignamos la variable de entorno en nuestra instancia de servidor.
+        port: envs.PORT,
+        routes: AppRoutes.routes //2
       }).start();
   }
