@@ -1,22 +1,20 @@
-import { Router } from 'express'; // 2
+import { Router } from 'express'; 
+import { AuthController } from './controller'; 
 
-export class AuthRoutes { // 1
+export class AuthRoutes {
 
-    static get routes(): Router { //3
+    static get routes(): Router {
   
-      const router = Router(); //4 
+      const router = Router(); 
+      const controller = new AuthController()
   
-        // Definir todas mis rutas especificas
-        router.post('/login', (req, res) => {  //6 
-            res.json({message: 'login'})
-        })
+
+        router.post('/login', controller.loginUser)
       
-        router.post('/register', (req, res) => { //7 
-            res.json({message: 'register'})
-        })
+        router.post('/register', controller.registerUser)
   
   
-        return router; // 5
+        return router; 
     }
   
   }
